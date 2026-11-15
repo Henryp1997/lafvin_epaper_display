@@ -28,17 +28,8 @@ draw_usuable_region_border(
     pixel_size
 )
 
-LETTER_L = [
-    (0, 1, 1, 0, 0, 0, 0),
-    (0, 0, 1, 0, 0, 0, 0),
-    (0, 0, 1, 0, 0, 0, 0),
-    (0, 0, 1, 0, 0, 0, 0),
-    (0, 0, 1, 0, 0, 0, 0),
-    (0, 0, 1, 0, 0, 0, 0),
-    (0, 0, 1, 0, 0, 0, 0),
-    (1, 1, 1, 1, 1, 0, 0),
-]
 
+### Simulation loop
 j = 0
 while True:
     clock = pg.time.Clock()
