@@ -49,9 +49,9 @@ while True:
                 square = Cell(surf, position=(x, y), pixel_size=pixel_size)
     
     # Draw string
-    string = "hello, world!" * 8
-    buffer_data = draw_string(surf, string)
     if j == 0:
+        string = "hello, world!" * 8
+        buffer_data = draw_string(surf, string)
         output_cpp_code_to_file(buffer_data, string, func_name="helloWorld")
 
     # Mask out any pixels that overstepped the allowed region
