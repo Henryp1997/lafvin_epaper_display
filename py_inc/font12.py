@@ -1,3 +1,12 @@
+"""
+font12.py
+
+12pt font defining characters/symbols for the ePaper display
+The `font12` dict was generated with generate_font.generate_font_from_cpp
+
+    - Author: HP (2026)
+"""
+
 font12 = {
     r" ": [
         [0, 0, 0, 0, 0, 0, 0, 0],
