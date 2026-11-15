@@ -1,5 +1,5 @@
 import pygame as pg
-from pygame.locals import *
+from pygame.locals import QUIT, MOUSEBUTTONDOWN
 import sys
 from py_inc.drawing import (
     Cell, draw_usuable_region_border,
@@ -49,7 +49,7 @@ while True:
                 square = Cell(surf, position=(x, y), pixel_size=pixel_size)
     
     # Draw string
-    string = "hello, world!"
+    string = "hello, world!" * 8
     buffer_data = draw_string(surf, string)
     if j == 0:
         output_cpp_code_to_file(buffer_data, string, func_name="helloWorld")
