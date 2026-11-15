@@ -11,6 +11,9 @@ nlines = 9
 # as determined empirically using char_start = (7, 12)
 buffer_nchars = [8, 9, 9, 8]
 buffer_start_pos = [0, 8, 17, 26] # Buffer character positions (not pixels!)
+
+# Pixel delta in vertical direction between top of characters
+# in one row and top of characters in the row below
 line_spacing = 12
 
 # Minimum values of x and y that will actually draw pixels

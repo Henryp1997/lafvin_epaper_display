@@ -101,12 +101,10 @@ def output_cpp_code_to_file(
 
     for buffer in range(4):
         code += f"  // Draw buffer {buffer}\n"
-        if buffer == 0:
-            x, y = char_start
-        else:
-            x, y = 0, char_start[1]
         code += "  paint.Clear(UNCOLORED);\n"
-        for line in buffer_data:
+        x = char_start[0] if buffer == 0 else 0
+        for line_num, line in enumerate(buffer_data):
+            y = char_start[0] + line_num * line_spacing # Offset y by line spacing
             this_line_data = "".join(line[buffer])
             code += f"  paint.DrawStringAt({x}, {y}, \"{this_line_data}\", &Font12, COLORED);\n"
         code += "  epd.Display1(image);\n\n"
