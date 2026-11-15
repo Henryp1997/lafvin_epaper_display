@@ -43,7 +43,7 @@ def generate_font_from_cpp():
         string += f"{' '*4}],\n"
     string += "}\n"
 
-    with open("font12.py", "w") as f:
+    with open(HERE / "font12.py", "w") as f:
         f.write(string)
 
 
