@@ -1,6 +1,6 @@
 import pygame as pg
 import numpy as np
-from py_inc.consts import colours
+from py_inc.consts import *
 
 
 class Cell():
