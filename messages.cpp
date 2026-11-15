@@ -5,7 +5,7 @@
 #define COLORED     0
 #define UNCOLORED   1
 
-void helloWorld(Paint& paint, Epd& epd, unsigned char* image) {
+void helloWorldTest(Paint& paint, Epd& epd, unsigned char* image) {
   paint.Clear(UNCOLORED);
   paint.DrawStringAt(1, 10, "Hello, wo", &Font12, COLORED);
   epd.Display1(image);

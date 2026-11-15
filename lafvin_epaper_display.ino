@@ -3,7 +3,8 @@
 #include "epd2in13_V4.h"
 #include "epdpaint.h"
 #include "star.h"
-#include "messages.h"
+// #include "messages.h"
+#include "cpp_out.h"
 
 #define COLORED     0
 #define UNCOLORED   1
@@ -36,6 +37,7 @@ void setup()
   // epd.Init(FULL);
 
   helloWorld(paint, epd, image);
+
 
   delay(100);
   // epd.Init(FULL);

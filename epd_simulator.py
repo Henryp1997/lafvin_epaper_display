@@ -1,8 +1,11 @@
 import pygame as pg
 from pygame.locals import *
 import sys
-from py_inc.drawing import Cell, draw_usuable_region_border, draw_grid_lines, draw_unusable_pixels_on_top
-from py_inc.text_engine import draw_string
+from py_inc.drawing import (
+    Cell, draw_usuable_region_border,
+    draw_grid_lines, draw_unusable_pixels_on_top
+)
+from py_inc.text_engine import draw_string, output_cpp_code_to_file
 from py_inc.consts import *
 
 pg.init()
@@ -55,8 +58,10 @@ while True:
                 square = Cell(surf, position=(x, y), pixel_size=pixel_size)
     
     # Draw string
-    string = "hello, world!" * 8
-    draw_string(surf, string)
+    string = "hello, world!"
+    buffer_data = draw_string(surf, string)
+    if j == 0:
+        output_cpp_code_to_file(buffer_data, string, func_name="helloWorld")
 
     # Mask out any pixels that overstepped the allowed region
     draw_unusable_pixels_on_top(
@@ -64,3 +69,4 @@ while True:
     )
 
     pg.display.update()
+    j += 1

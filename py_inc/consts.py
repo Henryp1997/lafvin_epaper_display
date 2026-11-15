@@ -3,7 +3,7 @@ pixel_size = 5 # Size of the EPD pixels in simulation pixels
 num_lines_x = epd_res_x + 2
 num_lines_y = epd_res_y + 2
 char_width = 7       # Width of a character in font12 of the EPD driver
-char_height = 8      # Height of a character in font12 of the EPD driver
+char_height = 12     # Height of a character in font12 of the EPD driver
 char_start = (7, 12) # Topleft-most character position in EPD pixels
 nlines = 9
 
