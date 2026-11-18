@@ -7,7 +7,7 @@ from py_inc.drawing import (
     draw_grid_lines, draw_unusable_pixels_on_top
 )
 from py_inc.text_engine import draw_string, draw_buffer_chars, output_cpp_code_to_file
-from py_inc.messages import messages, func_names
+from py_inc.messages_ import messages, func_names
 from py_inc.consts import *
 HERE = Path(__file__).parent
 
@@ -32,8 +32,18 @@ draw_usuable_region_border(
 )
 
 
+def get_new_message_idx(current_idx):
+    import random
+    next_idx = current_idx
+    while next_idx == current_idx:
+        next_idx = random.randint(1, len(messages) - 1)
+
+    return next_idx
+
+
 ### Simulation loop
 j = 0
+advance_in_order = False
 output_message = True
 draw_watermark = True
 message_idx = 0      # Index of message in `messages` list
@@ -63,14 +73,21 @@ while True:
                 square = Cell(surf, position=(x, y), pixel_size=pixel_size)
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_SPACE:
+                # Pressed space. Advance message to next page if in a multi-page message or a random next message
                 if isinstance(current_message, (list, tuple)):
                     # Message is a multi-page message, only change message_idx if advanced past the last page
                     message_page_idx += 1
                     if message_page_idx > len(current_message) - 1:
-                        message_idx += 1
                         message_page_idx = 0
+                        if advance_in_order:
+                            message_idx += 1
+                        else:
+                            message_idx = get_new_message_idx(current_idx=message_idx)
                 else:
-                    message_idx += 1
+                    if advance_in_order:
+                        message_idx += 1
+                    else:
+                        message_idx = get_new_message_idx(current_idx=message_idx)
                 output_message = True
             elif event.key == pg.K_ESCAPE:
                 print("Clearing cpp files...")
