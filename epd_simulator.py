@@ -85,7 +85,8 @@ while True:
     
     buffer_data = draw_string(surf, string_to_write)
 
-    if draw_watermark:
+    if message_idx != 0 and draw_watermark:
+        # Draw a "Press the button..." watermark
         buffer_data[-1][1] = [i for i in f"{' ' * (buffer_nchars[1] - 2)}Pr"]
         buffer_data[-1][2] = [i for i in "ess the b"]
         buffer_data[-1][3] = [i for i in "utton..."]
@@ -94,6 +95,16 @@ while True:
             draw_buffer_chars(
                 surf, buffer, -1, buffer_data,
                 x=char_start[0] + (sum(buffer_nchars[:buffer])) * char_width,
+                y=char_start[1] + (nlines - 1) * (char_height + line_separation)
+            )
+
+    if isinstance(current_message, (tuple, list)):
+        # Draw a page number
+        buffer_data[-1][0] = [i for i in f"Page {message_page_idx + 1} of {len(messages[message_idx])}"]
+        for buffer in (0,):
+            draw_buffer_chars(
+                surf, buffer, -1, buffer_data,
+                x=char_start[0],
                 y=char_start[1] + (nlines - 1) * (char_height + line_separation)
             )
 
