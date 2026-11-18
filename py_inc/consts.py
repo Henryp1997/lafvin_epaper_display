@@ -1,5 +1,5 @@
 epd_res_x, epd_res_y = 250, 122
-pixel_size = 5 # Size of the EPD pixels in simulation pixels
+pixel_size = 3 # Size of the EPD pixels in simulation pixels
 num_lines_x = epd_res_x + 2
 num_lines_y = epd_res_y + 2
 char_width = 7       # Width of a character in font12 of the EPD driver
@@ -15,6 +15,7 @@ buffer_start_pos = [0, 8, 17, 26] # Buffer character positions (not pixels!)
 # Pixel delta in vertical direction between top of characters
 # in one row and top of characters in the row below
 line_spacing = 12
+line_separation = line_spacing - char_height # Pixels between bottom of one line and top of next line
 
 # Minimum values of x and y that will actually draw pixels
 # The LAFVIN ePaper display appears to have a border of pixels that aren't actually visible
